@@ -1,0 +1,44 @@
+{
+  "name": "transporte-oriente-completo",
+  "description": "App de transporte completa para el oriente ecuatoriano con múltiples vehículos, fletes, mapas fluviales y multi-idioma",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "android": "npm run build && npx cap sync android",
+    "ios": "npm run build && npx cap sync ios"
+  },
+  "dependencies": {
+    "@clerk/clerk-react": "^5.61.3",
+    "@hookform/resolvers": "^3.9.0",
+    "@stripe/react-stripe-js": "^5.6.1",
+    "@stripe/stripe-js": "^8.9.0",
+    "axios": "^1.7.9",
+    "framer-motion": "^11.0.0",
+    "leaflet": "^1.9.4",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-hook-form": "^7.54.2",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.3.0",
+    "yup": "^1.6.0"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/ios": "^6.0.0",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}
