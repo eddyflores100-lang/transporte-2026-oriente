@@ -2,12 +2,16 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/orientego.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OrienteGo | Transporte Completo del Oriente Ecuatoriano</title>
+    <meta name="theme-color" content="#0f766e" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="OrienteGo | Movilidad del Oriente ecuatoriano" />
+    <meta property="og:description" content="Prototipo de interfaz para explorar viajes, carga y transporte fluvial en la Amazonía ecuatoriana." />
+    <title>OrienteGo | Prototipo de movilidad del Oriente ecuatoriano</title>
     <meta
       name="description"
-      content="App completa de transporte con camionetas, motos, lanchas, camiones, fletes, mapas fluviales y multi-idioma"
+      content="Prototipo móvil-first de movilidad, transporte fluvial y carga para la Amazonía ecuatoriana."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,16 +35,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <script>
-      // Force unregister all service workers to clear potential old versions
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-          for(let registration of registrations) {
-            registration.unregister();
-          }
-        });
-      }
-    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -53,14 +53,14 @@ const RideScreen: React.FC = () => {
   const searchParams = new URLSearchParams(location.search)
   const destQuery = searchParams.get('dest') || ''
 
-  const [driver, setDriver] = useState({
+  const driver = {
     name: 'Carlos M.',
     rating: 4.8,
     car: 'Toyota Corolla 2022',
     plate: 'ABC-123',
     eta: '5 min',
     price: '$12.50'
-  })
+  }
 
   const [origin, setOrigin] = useState('Mi Ubicación Actual')
   const [destination, setDestination] = useState(destQuery)
