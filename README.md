@@ -1,164 +1,134 @@
-# 🚗 Gosa - Transporte del Oriente
+# OrienteGo — movilidad y transporte del Oriente ecuatoriano
 
-**App de transporte tipo Uber para la región oriental de Ecuador**
+[![CI](https://github.com/eddyflores100-lang/transporte-2026-oriente/actions/workflows/ci.yml/badge.svg)](https://github.com/eddyflores100-lang/transporte-2026-oriente/actions/workflows/ci.yml)
+[![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-238636)](LICENSE)
 
-## 🌿 Descripción
+**OrienteGo** es un prototipo de interfaz móvil-first para explorar servicios de movilidad, transporte fluvial y carga en la Amazonía ecuatoriana. El repositorio conserva el nombre técnico `transporte-2026-oriente`; el nombre anterior del concepto era Gosa.
 
-Gosa es una plataforma de transporte diseñada específicamente para las necesidades de movilidad en la Amazonía ecuatoriana. Conecta a conductores locales con pasajeros de manera segura, confiable y accesible.
+> **Estado del producto: prototipo frontend.** Las pantallas permiten revisar flujos y componentes visuales, pero este repositorio no incluye un backend operativo de viajes, asignación real de conductores, verificación documental, pagos, seguimiento en vivo ni atención de emergencias. No debe utilizarse para solicitar viajes o procesar operaciones reales.
 
-## 🎯 Características Principales
+## Qué incluye la interfaz
 
-### 🚖 Para Pasajeros
-- **Solicitud de viajes** en tiempo real
-- **Mapa interactivo** con conductores disponibles
-- **Tarifas transparentes** y competitivas
-- **Perfiles verificados** de conductores
-- **Sistema de calificaciones** y reseñas
-- **Múltiples métodos de pago**
+| Área | Ruta | Alcance actual |
+|---|---|---|
+| Inicio y mapa | `/` | Vista de inicio, mapa y acceso a servicios |
+| Acceso | `/auth` | Pantalla de autenticación preparada para Clerk |
+| Viajes | `/ride` | Flujo de solicitud de demostración y búsqueda de ubicaciones |
+| Seguridad | `/safety` | Interfaz de opciones de seguridad; no es un servicio de emergencia |
+| Perfil | `/profile` | Pantalla de perfil |
+| Vehículos | `/vehicle-selection` | Selección visual de tipo de vehículo |
+| Registro de conductor | `/driver-registration` | Formulario de demostración; no verifica documentos |
+| Fletes | `/freight` | Calculadora local de estimación |
+| Transporte fluvial | `/boat-map` | Mapa con puntos y trayectos ilustrativos |
+| Calificaciones | `/ratings` | Interfaz de reseñas |
+| Historial | `/trip-history` | Vista de historial de demostración |
 
-### 👨‍✈️ Para Conductores
-- **Registro sencillo** con verificación de documentos
-- **Gestión de viajes** y ganancias
-- **Navegación optimizada** para rutas rurales
-- **Soporte 24/7** para incidentes
-- **Programación flexible** de horarios
+Las cifras, conductores, matrículas, precios y recorridos de ejemplo que aparecen en la interfaz no representan ofertas ni servicios confirmados.
 
-### 🏞️ Específico para el Oriente
-- **Cobertura en zonas rurales** y comunidades
-- **Vehiculos adaptados** para terrenos difíciles (camionetas 4x4)
-- **Tarifas especiales** para trayectos largos
-- **Idiomas locales** (español, kichwa, shuar)
-- **Puntos de referencia** comunitarios
+## Tecnologías
 
-## 🛠️ Tecnologías Utilizadas
+- React 19 y TypeScript
+- Vite 6
+- React Router 7
+- React Leaflet y Leaflet
+- Tailwind CSS 3
+- Framer Motion
+- Clerk React (la autenticación necesita una clave pública de Clerk configurada)
+- Stripe.js está incluido como dependencia del frontend; no hay procesamiento de pagos operativo en este repositorio.
 
-### Frontend
-- **React 19** con TypeScript
-- **Vite** para build y desarrollo rápido
-- **React Router** para navegación
-- **Leaflet/React-Leaflet** para mapas
-- **Axios** para peticiones HTTP
-- **CSS Modules** para estilos
+## Requisitos
 
-### Backend (Próximamente)
-- **Node.js** con Express
-- **PostgreSQL** con Prisma ORM
-- **JWT** para autenticación
-- **Socket.io** para tiempo real
-- **Stripe API** para pagos
+- Node.js 22 o superior
+- npm incluido con Node.js
 
-### Despliegue
-- **Vercel** para frontend
-- **Railway/Render** para backend
-- **GitHub Actions** para CI/CD
+## Instalación local
 
-## 📦 Instalación y Uso Local
-
-### Prerrequisitos
-- Node.js 18 o superior
-- npm, yarn o pnpm
-
-### Pasos
-1. Clonar el repositorio:
 ```bash
-git clone https://github.com/tuusuario/gosa-app.git
-cd gosa-app
-```
-
-2. Instalar dependencias:
-```bash
-npm install
-# o
-yarn install
-# o
-pnpm install
-```
-
-3. Ejecutar en desarrollo:
-```bash
+git clone https://github.com/eddyflores100-lang/transporte-2026-oriente.git
+cd transporte-2026-oriente
+npm ci
+cp .env.example .env.local
 npm run dev
-# o
-yarn dev
-# o
-pnpm dev
 ```
 
-4. Abrir en el navegador:
+Vite inicia el servidor local en [http://localhost:3000](http://localhost:3000).
+
+### Variables de entorno
+
+Configura `VITE_CLERK_PUBLISHABLE_KEY` en `.env.local` si deseas probar el proveedor de autenticación en su entorno de desarrollo.
+
+- La clave publicable de Clerk está diseñada para exponerse en el cliente.
+- Nunca pongas una clave secreta de Clerk, Stripe u otro proveedor en variables `VITE_*`, porque Vite las incorpora al bundle del navegador.
+- No configures pagos reales: no existe un backend que cree y verifique sesiones de pago.
+
+## Comandos
+
+| Comando | Descripción |
+|---|---|
+| `npm run dev` | Servidor local de desarrollo |
+| `npm run typecheck` | Comprueba tipos TypeScript |
+| `npm run build` | Genera el build de producción |
+| `npm run check` | Ejecuta typecheck y build |
+| `npm run preview` | Previsualiza el build local |
+
+## Mapas, ubicación y servicios externos
+
+- El mapa usa teselas de Carto/OpenStreetMap.
+- La pantalla de viajes consulta Nominatim para geocodificación cuando se buscan direcciones.
+- El navegador puede solicitar permiso de geolocalización. Si el usuario acepta, la aplicación lee la ubicación del dispositivo.
+- Estas integraciones dependen de servicios externos y sus condiciones, límites y disponibilidad. No hay un servicio propio de mapas ni un SLA.
+
+No envíes datos personales reales a esta demo. Antes de habilitar usuarios reales, revisa los requisitos de privacidad, consentimiento, retención y seguridad de cada proveedor.
+
+## Estructura del repositorio
+
+```text
+src/
+  components/   Componentes de navegación e interfaz
+  contexts/     Contexto de idioma
+  screens/      Pantallas de cada flujo
+  App.tsx       Rutas de la aplicación
+  main.tsx      Punto de entrada React
+  index.css     Estilos globales
+public/         Recursos estáticos
+docs/           Estado, seguridad y preparación para producción
+.github/
+  workflows/    Integración continua
 ```
-http://localhost:3000
+
+## Preparación antes de un piloto real
+
+1. Diseñar y desplegar un backend con autenticación y autorización por rol.
+2. Crear un modelo de viajes y estados con persistencia, auditoría y controles de acceso.
+3. Implementar asignación de conductores y ubicación en tiempo real con consentimiento.
+4. Validar licencias, seguros, identidad y documentación mediante un proceso legítimo y revisado.
+5. Implementar pagos únicamente en servidor, con webhooks verificados e idempotencia.
+6. Definir soporte, cancelaciones, incidentes, privacidad, retención y borrado.
+7. Realizar pruebas de accesibilidad, seguridad, carga y escenarios de error antes de cualquier piloto.
+
+Consulta [el estado y los bloqueadores](docs/PROJECT_STATUS.md), la [política de seguridad](SECURITY.md) y la [guía de contribución](CONTRIBUTING.md).
+
+## Desarrollo y contribuciones
+
+```bash
+npm ci
+npm run check
 ```
 
-## 📁 Estructura del Proyecto
+Los pull requests deben describir el cambio y las pruebas ejecutadas. No incluyas secretos, documentos de identidad, ubicaciones privadas ni datos reales de pasajeros o conductores.
 
-```
-gosa-app/
-├── src/
-│   ├── components/     # Componentes reutilizables
-│   ├── pages/         # Páginas de la aplicación
-│   ├── hooks/         # Custom hooks de React
-│   ├── utils/         # Funciones utilitarias
-│   ├── types/         # Definiciones de TypeScript
-│   ├── styles/        # Estilos globales
-│   ├── App.tsx        # Componente principal
-│   └── main.tsx       # Punto de entrada
-├── public/            # Assets estáticos
-├── package.json
-├── vite.config.ts
-└── README.md
-```
+- [Código fuente](https://github.com/eddyflores100-lang/transporte-2026-oriente)
+- [Incidencias y mejoras](https://github.com/eddyflores100-lang/transporte-2026-oriente/issues)
+- [Pull requests](https://github.com/eddyflores100-lang/transporte-2026-oriente/pulls)
+- [Versiones](https://github.com/eddyflores100-lang/transporte-2026-oriente/releases)
 
-## 🚀 Despliegue
+## Licencia
 
-### Frontend (Vercel)
-1. Conectar repositorio GitHub con Vercel
-2. Configurar variables de entorno
-3. Desplegar automáticamente en cada push
-
-### Backend (Railway)
-1. Subir código del backend
-2. Configurar base de datos PostgreSQL
-3. Establecer variables de entorno
-4. Conectar con frontend via CORS
-
-## 📱 Funcionalidades Futuras
-
-### Fase 2
-- [ ] **App móvil** React Native
-- [ ] **Pagos en efectivo** con código QR
-- [ ] **Viajes compartidos** para comunidades
-- [ ] **Sistema de paquetes** y envíos
-
-### Fase 3
-- [ ] **Integración con GPS** offline
-- [ ] **Alertas de seguridad** comunitarias
-- [ ] **Reservas anticipadas** para fiestas
-- [ ] **Programa de lealtad** para usuarios frecuentes
-
-## 🤝 Contribuir
-
-1. Fork el proyecto
-2. Crear rama para feature (`git checkout -b feature/AmazingFeature`)
-3. Commit cambios (`git commit -m 'Add AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abrir Pull Request
-
-## 📄 Licencia
-
-Distribuido bajo licencia MIT. Ver `LICENSE` para más información.
-
-## 👥 Equipo
-
-- **Edison** - Fundador y desarrollador principal
-- **Comunidades del Oriente** - Testing y feedback
-- **Conductores locales** - Validación de requerimientos
-
-## 🌐 Contacto
-
-- **Email**: info@gosa-ec.com
-- **Website**: https://gosa-ec.com
-- **GitHub**: https://github.com/tuusuario/gosa-app
-- **WhatsApp**: +593 99 123 4567
+MIT. Consulta el archivo [LICENSE](LICENSE).
 
 ---
 
-**¡Conectando comunidades, un viaje a la vez!** 🌿🚗
+*OrienteGo es un prototipo de software independiente. No está afiliado a Uber, a proveedores cartográficos ni a autoridades de transporte.*
